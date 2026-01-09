@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book an Appointment | Siren Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #0f2a2e;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .booking-container {
+      max-width: 650px;
+      margin: 80px auto;
+      padding: 40px;
+      background-color: #14383d;
+      border-radius: 14px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+
+    p {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #cfe6e8;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      color: #cfe6e8;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      border: none;
+      font-size: 15px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background-color: #2fa4a9;
+      border: none;
+      border-radius: 8px;
+      color: #ffffff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #23898d;
+    }
+
+    .note {
+      font-size: 13px;
+      color: #b7d6d9;
+      text-align: center;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="booking-container">
+    <h1>Book an Appointment</h1>
+    <p>Submit a request and we’ll confirm your appointment shortly.</p>
+
+    <!-- Replace action later with Formspree, Netlify, etc. -->
+    <form 
+	action="https://formspree.io/f/xlggrrjl" method="post">
+
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label for="service">Select a Service</label>
+      <select id="service" name="service" required>
+        <option value="">-- Choose a Service --</option>
+        <option value="facial">Facial</option>
+        <option value="acne-treatment">Lash Extensions</option>
+        <option value="chemical-peel">Lash Fill</option>
+        <option value="microneedling">Basic Facial</option>
+        <option value="body-treatment">Express Facial</option>
+        <option value="consultation">Back Facial</option>
+		<option value="consultation">Nostril Wax</option>
+		<option value="consultation">Cheeks, Lip, Chin wax</option>
+		<option value="consultation">Eyebrow Wax</option>
+		<option value="consultation">Underarm Wax</option>
+		<option value="consultation">Lash/Eyebrow Tint</option>
+		<option value="consultation">Lash Lift</option>
+		<option value="consultation">Brow Lamination</option>
+      </select>
+
+      <label for="date">Preferred Date</label>
+      <input type="date" id="date" name="date" required>
+
+      <label for="time">Preferred Time</label>
+      <input type="time" id="time" name="time" required>
+
+      <label for="notes">Additional Notes (optional)</label>
+      <textarea id="notes" name="notes" placeholder="Skin concerns, allergies, special requests..."></textarea>
+
+      <button type="submit">Request Appointment</button>
+
+      <div class="note">
+        This is a request only. Appointments are confirmed via email or phone.
+      </div>
+
+    </form>
+  </div>
+
+</body>
+</html>
