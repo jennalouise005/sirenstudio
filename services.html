@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Siren Studio | Services & Pricing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore Siren Studio's lash, skin, and brow services, plus full pricing for esthetics and more in Spokane, WA." />
+
+  <style>
+    :root {
+      --deep-blue: #071326;
+      --ocean-blue: #102341;
+      --sea-foam: #9fd5c0;
+      --accent-green: #5c8f82;
+      --soft-white: #f9fbff;
+      --text-light: #dde6ff;
+      --text-muted: #a9b5d1;
+      --star-gold: #f6e9b8;
+      --radius-lg: 1.5rem;
+      --radius-md: 1rem;
+      --shadow-soft: 0 18px 35px rgba(0, 0, 0, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #182a4d 0%, #050713 60%, #02020a 100%);
+      color: var(--soft-white);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 92vw);
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to right,
+        rgba(7, 19, 38, 0.96),
+        rgba(10, 28, 56, 0.9)
+      );
+      border-bottom: 1px solid rgba(159, 213, 192, 0.18);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid rgba(159, 213, 192, 0.45);
+      box-shadow: 0 0 18px rgba(159, 213, 192, 0.2);
+      background: radial-gradient(circle at 30% 20%, #5c8f82, #071326);
+    }
+
+    .brand-text h1 {
+      font-size: 1.1rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .brand-tagline {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.4rem;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      position: relative;
+      padding-bottom: 0.2rem;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--sea-foam), var(--accent-green));
+      transition: width 0.25s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    main {
+      padding-bottom: 3rem;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 3.2rem 0 2.5rem;
+      border-bottom: 1px solid rgba(159, 213, 192, 0.18);
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.2rem;
+      align-items: center;
+    }
+
+    .hero-text-block h2 {
+      font-size: clamp(2rem, 3vw + 1.2rem, 2.7rem);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-text-block h2 span {
+      display: inline-block;
+      background: linear-gradient(90deg, #e4f5ff, var(--sea-foam));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-tagline {
+      font-style: italic;
+      color: var(--text-light);
+      margin-bottom: 0.9rem;
+      font-size: 0.95rem;
+    }
+
+    .hero-text {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 35rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(159, 213, 192, 0.5);
+      background: rgba(15, 29, 52, 0.9);
+      color: var(--text-light);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .badge::before {
+      content: "✦";
+      font-size: 0.7rem;
+      color: var(--star-gold);
+    }
+
+    .hero-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(159, 213, 192, 0.5);
+      box-shadow: var(--shadow-soft);
+      background: radial-gradient(circle at top, #334c7a, #050713);
+      min-height: 260px;
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.92;
+    }
+
+    /* Sections */
+    section {
+      padding: 2.6rem 0;
+    }
+
+    .section-heading {
+      margin-bottom: 1.3rem;
+    }
+
+    .section-heading h3 {
+      font-size: 1.3rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    .section-heading p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 34rem;
+    }
+
+    /* Two column layout */
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .panel {
+      background: rgba(9, 21, 41, 0.98);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(159, 213, 192, 0.35);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.35);
+      padding: 1.1rem 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .panel h4 {
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+
+    .panel p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* Service groups */
+    .service-group {
+      margin-bottom: 1.4rem;
+    }
+
+    .service-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .service-group h5 {
+      font-size: 0.9rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+      color: var(--text-light);
+    }
+
+    .service-group p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .service-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.7rem;
+      font-size: 0.86rem;
+      padding: 0.25rem 0;
+      border-bottom: 1px dashed rgba(159, 213, 192, 0.22);
+    }
+
+    .service-line:last-child {
+      border-bottom: none;
+    }
+
+    .service-line span.price {
+      color: var(--sea-foam);
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Chips & info */
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.45rem;
+    }
+
+    .chip {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(159, 213, 192, 0.5);
+      background: rgba(7, 19, 38, 0.9);
+      color: var(--text-muted);
+    }
+
+    /* Full menu image */
+    .menu-wrapper {
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(159, 213, 192, 0.45);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      background: #050713;
+    }
+
+    .menu-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #050713;
+    }
+
+    .menu-caption {
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* Policies / booking */
+    .policies-list {
+      list-style: none;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+    }
+
+    .policies-list li {
+      padding: 0.3rem 0;
+      border-bottom: 1px dashed rgba(159, 213, 192, 0.22);
+    }
+
+    .policies-list li:last-child {
+      border-bottom: none;
+    }
+
+    .accent {
+      color: var(--sea-foam);
+      font-weight: 500;
+    }
+
+    /* CTA buttons */
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.1rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.6rem 1.4rem;
+      font-size: 0.86rem;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 500;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--sea-foam), var(--accent-green));
+      color: #041019;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(159, 213, 192, 0.6);
+      color: var(--text-light);
+    }
+
+    .btn-outline:hover {
+      background: rgba(159, 213, 192, 0.1);
+      transform: translateY(-1px);
+    }
+
+    /* Footer */
+    footer {
+      padding: 1.8rem 0 2rem;
+      border-top: 1px solid rgba(159, 213, 192, 0.18);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-inner,
+      .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 2.4rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-logo">
+          <img src="sirenstudiologo.svg" alt="Siren Studio logo" />
+        </div>
+        <div class="brand-text">
+          <h1>Siren Studio</h1>
+          <div class="brand-tagline">Esthetics &amp; more • Spokane, WA</div>
+        </div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html#top">Home</a></li>
+          <li><a href="#top">Services</a></li>
+          <li><a href="index.html#products">Skincare</a></li>
+          <li><a href="index.html#gallery">Studio</a></li>
+          <li><a href="index.html#contact">Book</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text-block">
+          <h2><span>Services &amp; Pricing</span></h2>
+          <p class="hero-tagline">
+            Lashes, skin, brows &amp; more — curated to help you feel like your softest, glowiest self.
+          </p>
+          <p class="hero-text">
+            Below is an overview of what we offer at Siren Studio. Exact pricing
+            may vary slightly based on your unique needs and timing, but this will give
+            you a clear idea of what to expect when you book.
+          </p>
+        </div>
+
+        <div class="hero-card" aria-hidden="true">
+          <img src="insidesalon.jpg" alt="Treatment room at Siren Studio" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Lashes + Brows -->
+    <section id="lashes">
+      <div class="container">
+        <div class="section-heading">
+          <h3>Lashes &amp; Brows</h3>
+          <p>
+            Thoughtfully mapped, soft, and wearable — from subtle enhancement to full siren glam.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div class="panel">
+            <div class="service-group">
+              <h5>Lash Extensions</h5>
+              <div class="service-line">
+                <span>Classic Full Set</span>
+                <span class="price">starting at $85</span>
+              </div>
+              <div class="service-line">
+                <span>Hybrid Full Set</span>
+                <span class="price">starting at $120</span>
+              </div>
+              <div class="service-line">
+                <span>Volume / Mega Volume Set</span>
+                <span class="price">starting at $170</span>
+              </div>
+              <div class="service-line">
+                <span>2–3 Week Fill</span>
+                <span class="price">starting at $65-105</span>
+              </div>
+              <div class="service-line">
+                <span>Add Ons - Glitter, colored lashes,etc.</span>
+                <span class="price">$15</span>
+              </div>
+              <p>
+                Lash sets are fully customized to your eye shape, natural lash
+                health, and how dramatic or natural you like to feel day-to-day.
+              </p>
+            </div>
+
+            <div class="service-group">
+              <h5>Lash Lift &amp; Tint</h5>
+              <div class="service-line">
+                <span>Lash Lift</span>
+                <span class="price">$45</span>
+              </div>
+              <div class="service-line">
+                <span>Lash/eyebrow Tint</span>
+                <span class="price">$20</span>
+              </div>
+              <p>
+                Perfect if you want a low-maintenance curl and extra definition without extensions.
+              </p>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="service-group">
+              <h5>Brow Shaping</h5>
+              <div class="service-line">
+                <span>Brow Wax</span>
+                <span class="price">$20</span>
+              </div>
+              <div class="service-line">
+                <span>Brow Tint</span>
+                <span class="price">$20</span>
+              </div>
+			  <div class="service-line">
+                <span>Brow Lamination</span>
+                <span class="price">$45</span>
+              </div>
+              <p>
+                Mapping, gentle waxing, and soft finishing so your brows frame your face
+                without looking harsh or overdone.
+              </p>
+            </div>
+
+            <div class="service-group">
+              <h5>Face Waxing</h5>
+              <div class="service-line">
+                <span>Cheeks Lip or Chin</span>
+                <span class="price">$10</span>
+              </div>
+              <div class="service-line">
+                <span>Nostril</span>
+                <span class="price">$15</span>
+              </div>
+              <div class="service-line">
+                <span>underarm</span>
+                <span class="price">$25</span>
+              </div>
+              <p>
+                We prioritize comfort and skin health while removing unwanted hair.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skin & Facials -->
+    <section id="skin">
+      <div class="container">
+        <div class="section-heading">
+          <h3>Skin &amp; Facials</h3>
+          <p>
+            Calming, results-driven facials using professional IMAGE Skincare products — tailored to what your skin needs that day.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div class="panel">
+            <div class="service-group">
+              <h5>Signature Facials</h5>
+              <div class="service-line">
+                <span>Basic Facial (65 minutes)</span>
+                <span class="price">$60</span>
+              </div>
+              <div class="service-line">
+                <span>Express Facial (45 minutes)</span>
+                <span class="price">$50</span>
+              </div>
+              <div class="service-line">
+                <span>Back Facial (65 minutes)</span>
+                <span class="price">$70</span>
+              </div>
+              <p>
+                Includes double cleanse, skin analysis, exfoliation, targeted
+                treatment mask, massage, and finishing products.
+              </p>
+              <div class="chip-row">
+                <span class="chip">IMAGE Skincare</span>
+                <span class="chip">Neck &amp; shoulder massage</span>
+                <span class="chip">Tailored to your skin</span>
+              </div>
+            </div>
+
+            <div class="service-group">
+              <h5>Add Ons</h5>
+              <div class="service-line">
+                <span>Microdermabrasion</span>
+                <span class="price">$25</span>
+              </div>
+              <div class="service-line">
+                <span>High Frequency</span>
+                <span class="price">$20</span>
+              </div>
+			  <div class="service-line">
+                <span>Hydrojelly Mask</span>
+                <span class="price">$15</span>
+              </div>
+			  <div class="service-line">
+                <span>Dermaplane</span>
+                <span class="price">$25</span>
+              </div>
+			  <div class="service-line">
+                <span>LED session</span>
+                <span class="price">$15</span>
+              </div>
+              <p>
+                Designed to help manage congestion, breakouts, and texture using
+                gentle yet effective actives.
+              </p>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Full Menu Image -->
+    <section id="menu">
+      <div class="container">
+        <div class="section-heading">
+          <h3>Full Service Menu</h3>
+          <p>
+            For the most accurate, up-to-date pricing and packages,
+            refer to the full printed menu below. You can screenshot or zoom in
+            to keep it handy when you’re booking.
+          </p>
+        </div>
+
+        <div class="menu-wrapper">
+          <!-- Your uploaded image of services & prices -->
+          <img src="serviceandpriceslist.jpg" alt="Siren Studio full service and price list" />
+        </div>
+        <p class="menu-caption">
+          Prices are subject to change. If you have any questions about what a service includes,
+          just text or email us before you come in.
+        </p>
+      </div>
+    </section>
+
+    <!-- Booking & Policies -->
+    <section id="policies">
+      <div class="container">
+        <div class="section-heading">
+          <h3>Booking &amp; Studio Policies</h3>
+          <p>
+            We keep things simple and respectful — for your time and ours. If you’re ever unsure
+            about something, reach out and we’ll walk you through it.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div class="panel">
+            <h4>Booking</h4>
+            <ul class="policies-list">
+              <li>
+                <span class="accent">How to book:</span> Call or text Chelsea at
+                <a href="tel:15096664050">(509) 666-4050</a> or Carolina at
+                <a href="tel:15092300881">(509) 230-0881</a>, or email
+                <a href="mailto:sirenstudio86@gmail.com">sirenstudio86@gmail.com</a>
+                with your preferred days/times.
+              </li>
+              <li>
+                <span class="accent">New clients:</span> Please arrive a few minutes early for
+                a quick consult so we can talk through your goals and any sensitivities.
+              </li>
+              <li>
+                <span class="accent">Lash appointments:</span> Arrive with clean, makeup-free
+                eyes for the best retention and to make the most of your time.
+              </li>
+            </ul>
+
+            <div class="cta-row">
+              <a href="index.html#contact" class="btn btn-primary">
+                Book an Appointment
+              </a>
+              <a href="https://instagram.com/sirenstudio86" target="_blank" rel="noopener" class="btn btn-outline">
+                See our work on Instagram
+              </a>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h4>Rescheduling &amp; Late Arrivals</h4>
+            <ul class="policies-list">
+              <li>
+                <span class="accent">Rescheduling:</span> If you need to move your appointment,
+                please let us know as soon as possible so we can offer the spot to someone else.
+              </li>
+              <li>
+                <span class="accent">Running late?</span> Text or call. We’ll always do our
+                best to accommodate, but your service may need to be shortened so we don’t
+                run into the next client.
+              </li>
+              <li>
+                <span class="accent">No-shows:</span> Repeated no-shows may require a deposit
+                to rebook. We want to keep our books open for people who are ready to come in
+                and be taken care of. 💙
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Siren Studio. All rights reserved.</div>
+      <div>Beautiful enough to lure a sailor to their doom.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

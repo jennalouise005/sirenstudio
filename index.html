@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Siren Studio | Esthetics & More</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Siren Studio - esthetics & more in Spokane. Lashes, skin care, brows, and relaxing treatments. Beautiful enough to lure a sailor to their doom." />
+
+  <style>
+    :root {
+      --deep-blue: #071326;
+      --ocean-blue: #102341;
+      --sea-foam: #9fd5c0;
+      --accent-green: #5c8f82;
+      --soft-white: #f9fbff;
+      --text-light: #dde6ff;
+      --text-muted: #a9b5d1;
+      --star-gold: #f6e9b8;
+      --radius-lg: 1.5rem;
+      --radius-md: 1rem;
+      --shadow-soft: 0 18px 35px rgba(0, 0, 0, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #182a4d 0%, #050713 60%, #02020a 100%);
+      color: var(--soft-white);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Layout */
+
+    .container {
+      width: min(1100px, 92vw);
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to right,
+        rgba(7, 19, 38, 0.96),
+        rgba(10, 28, 56, 0.9)
+      );
+      border-bottom: 1px solid rgba(159, 213, 192, 0.18);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid rgba(159, 213, 192, 0.45);
+      box-shadow: 0 0 18px rgba(159, 213, 192, 0.2);
+      background: radial-gradient(circle at 30% 20%, #5c8f82, #071326);
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-text h1 {
+      font-size: 1.1rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .brand-tagline {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.4rem;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      position: relative;
+      padding-bottom: 0.2rem;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--sea-foam), var(--accent-green));
+      transition: width 0.25s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero */
+
+    .hero {
+      position: relative;
+      padding: 3.5rem 0 3.2rem;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-copy h2 {
+      font-size: clamp(2.1rem, 3vw + 1.5rem, 3rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-copy h2 span {
+      display: inline-block;
+      background: linear-gradient(90deg, #e4f5ff, var(--sea-foam));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-tagline {
+      font-style: italic;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+      font-size: 0.98rem;
+    }
+
+    .hero-text {
+      color: var(--text-muted);
+      font-size: 0.96rem;
+      max-width: 35rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(159, 213, 192, 0.5);
+      background: rgba(15, 29, 52, 0.9);
+      color: var(--text-light);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .badge::before {
+      content: "✦";
+      font-size: 0.7rem;
+      color: var(--star-gold);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.65rem 1.5rem;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+        background 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--sea-foam), var(--accent-green));
+      color: #041019;
+      box-shadow: var(--shadow-soft);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(159, 213, 192, 0.6);
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 500;
+    }
+
+    .btn-outline:hover {
+      background: rgba(159, 213, 192, 0.1);
+      transform: translateY(-1px);
+    }
+
+    .hero-media {
+      position: relative;
+    }
+
+    .hero-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(159, 213, 192, 0.5);
+      box-shadow: var(--shadow-soft);
+      background: radial-gradient(circle at top, #334c7a, #050713);
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      max-height: 340px;
+      background-color: #050713;
+    }
+
+    .hero-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 0%, rgba(159, 213, 192, 0.4), transparent 55%),
+                  radial-gradient(circle at 90% 100%, rgba(246, 233, 184, 0.32), transparent 55%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .hero-floating {
+      position: absolute;
+      left: 8%;
+      bottom: -10%;
+      padding: 0.7rem 1rem;
+      border-radius: 1rem;
+      background: rgba(7, 19, 38, 0.9);
+      border: 1px solid rgba(159, 213, 192, 0.6);
+      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.6);
+      font-size: 0.75rem;
+      max-width: 220px;
+      color: var(--text-light);
+    }
+
+    .hero-floating strong {
+      display: block;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-floating small {
+      color: var(--text-muted);
+      font-size: 0.7rem;
+    }
+
+    /* Sections */
+
+    section {
+      padding: 2.7rem 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-heading h3 {
+      font-size: 1.4rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+
+    .section-heading p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* About */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .about-text h4 {
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .about-text p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .about-list {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-top: 0.4rem;
+    }
+
+    .about-list li {
+      margin-bottom: 0.3rem;
+      display: flex;
+      gap: 0.4rem;
+      align-items: baseline;
+    }
+
+    .about-list li::before {
+      content: "☾";
+      font-size: 0.8rem;
+      color: var(--sea-foam);
+    }
+
+    .about-image-wrapper {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(159, 213, 192, 0.5);
+      box-shadow: var(--shadow-soft);
+      background: radial-gradient(circle at center, #334c7a, #050713);
+    }
+
+    /* Services preview */
+
+    .services-preview {
+      background: radial-gradient(circle at top, #101d36, #050713);
+      border-top: 1px solid rgba(159, 213, 192, 0.18);
+      border-bottom: 1px solid rgba(159, 213, 192, 0.18);
+    }
+
+    .service-cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.3rem;
+      margin-top: 1rem;
+    }
+
+    .service-card {
+      padding: 1.1rem;
+      border-radius: var(--radius-md);
+      background: rgba(9, 21, 41, 0.98);
+      border: 1px solid rgba(159, 213, 192, 0.35);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.35);
+      font-size: 0.88rem;
+    }
+
+    .service-card h4 {
+      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .service-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .service-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.45rem;
+    }
+
+    .chip {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(159, 213, 192, 0.5);
+      background: rgba(7, 19, 38, 0.9);
+      color: var(--text-muted);
+    }
+
+    /* Products strip */
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-top: 1.2rem;
+      font-size: 0.8rem;
+    }
+
+    .product-item {
+      background: rgba(9, 21, 41, 0.95);
+      border-radius: 1rem;
+      border: 1px solid rgba(159, 213, 192, 0.4);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .product-thumb {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+    }
+
+    .product-body {
+      padding: 0.6rem 0.7rem 0.7rem;
+    }
+
+    .product-body h5 {
+      font-size: 0.8rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .product-body p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Gallery strip */
+
+    .gallery-strip {
+      display: grid;
+      grid-template-columns: 2fr 1.3fr 1.7fr;
+      gap: 0.9rem;
+      margin-top: 1.1rem;
+    }
+
+    .gallery-item {
+      border-radius: 1rem;
+      overflow: hidden;
+      border: 1px solid rgba(159, 213, 192, 0.5);
+      background: #050713;
+      min-height: 140px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Contact / footer */
+
+    .contact-cta {
+      text-align: center;
+    }
+
+    .contact-cta p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      justify-content: center;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+    }
+
+    .contact-block {
+      padding: 0.9rem 1.1rem;
+      border-radius: 1rem;
+      background: rgba(9, 21, 41, 0.98);
+      border: 1px solid rgba(159, 213, 192, 0.5);
+      min-width: 210px;
+    }
+
+    .contact-block h4 {
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .contact-block a {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 3px;
+    }
+
+    footer {
+      padding: 1.8rem 0 2rem;
+      border-top: 1px solid rgba(159, 213, 192, 0.18);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .footer-inner a {
+      color: var(--text-light);
+    }
+
+    /* Responsive */
+
+    @media (max-width: 900px) {
+      nav ul {
+        gap: 0.8rem;
+        font-size: 0.8rem;
+      }
+
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-media {
+        order: -1;
+      }
+
+      .hero {
+        padding-top: 2.5rem;
+      }
+
+      .about-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .gallery-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+
+      .service-cards {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .products-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .gallery-strip {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-floating {
+        position: static;
+        margin-top: 0.75rem;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-logo">
+          <!-- Updated to use sirenstudiologo.svg -->
+          <img src="sirenstudiologo.svg" alt="Siren Studio round logo" />
+        </div>
+        <div class="brand-text">
+          <h1>Siren Studio</h1>
+          <div class="brand-tagline">Esthetics &amp; more • Spokane, WA</div>
+        </div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html#top">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="index.html#products">Skincare</a></li>
+          <li><a href="gallery.html">Studio</a></li>
+          <li><a href="index.html#contact">Book</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h2><span>Siren Studio</span></h2>
+          <p class="hero-tagline">
+            “Beautiful enough to lure a sailor to their doom.”
+          </p>
+          <p class="hero-text">
+            A cozy esthetics studio in Spokane where ocean vibes meet lush greenery.
+            From fluttery lash sets to calming skin rituals, this is your little
+            escape to reset, recharge, and leave glowing.
+          </p>
+
+
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">
+              Book an Appointment
+            </a>
+            <a href="services.html" class="btn btn-outline">
+              View Services
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <div class="hero-card" aria-hidden="true">
+            <!-- Updated hero banner to use the text-only logo image -->
+            <img src="sirenstudiotextonlylogo.jpg" alt="Siren Studio text logo hero banner" />
+            <div class="hero-glow"></div>
+          </div>
+
+          <div class="hero-floating">
+            <strong>Now booking</strong>
+            Lashes, facials, brows &amp; more — handcrafted by Chelsea &amp; Carolina
+            at Siren Studio.
+            <br />
+            <small>2172 N Hamilton • Spokane, WA</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section>
+      <div class="container about-grid">
+        <div class="about-text">
+          <h4>A studio inspired by tides, moons &amp; a little bit of magic.</h4>
+          <p>
+            Siren Studio was created as a soft, ocean-inspired escape in the
+            middle of the city — a place where you can close your eyes, breathe,
+            and let someone else take care of the details for a while.
+          </p>
+          <p>
+            We focus on lashes, skin, and brows with a gentle, personalized
+            approach. Whether you’re getting ready for something special or
+            just need an hour to reset, you’re in the right place.
+          </p>
+
+          <ul class="about-list">
+            <li>Custom lash maps built for your eye shape and lifestyle</li>
+            <li>Targeted facials featuring IMAGE Skincare products</li>
+            <li>Detail-oriented brow shaping and soft waxing</li>
+            <li>Relaxed, judgment-free space — come exactly as you are</li>
+          </ul>
+        </div>
+
+        <div class="about-image-wrapper">
+          <img src="insidesalon.jpg" alt="Treatment room inside Siren Studio" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Preview -->
+    <section id="services" class="services-preview">
+      <div class="container">
+        <div class="section-heading">
+          <h3>Services</h3>
+          <p>
+            A quick peek at what we offer. Full menu and details are on the Services page.
+          </p>
+        </div>
+
+        <div class="service-cards">
+          <article class="service-card">
+            <h4>Lash Extensions</h4>
+            <div class="service-meta">Classic • Hybrid • Volume</div>
+            <p>
+              Soft, eye-opening lash sets tailored to your natural lashes and
+              how you actually live — from everyday wearable to full siren glam.
+            </p>
+            <div class="service-chip-row">
+              <span class="chip">Custom mapping</span>
+              <span class="chip">Lightweight fans</span>
+              <span class="chip">Natural or dramatic</span>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <h4>Skin &amp; Facials</h4>
+            <div class="service-meta">Featuring IMAGE Skincare</div>
+            <p>
+              Targeted treatments for real-life skin: congestion, dullness,
+              texture, and more — all with a calming, ritual-style experience.
+            </p>
+            <div class="service-chip-row">
+              <span class="chip">Brightening</span>
+              <span class="chip">Clarifying</span>
+              <span class="chip">Soothing</span>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <h4>Brows &amp; Waxing</h4>
+            <div class="service-meta">Shape • Detail • Finish</div>
+            <p>
+              Brow mapping, gentle waxing, and soft finishing so your features
+              pop without feeling overdone. Pair with a facial or stand-alone.
+            </p>
+            <div class="service-chip-row">
+              <span class="chip">Soft arch</span>
+              <span class="chip">Face framing</span>
+              <span class="chip">Low-stress wax</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skincare / Products -->
+    <section id="products">
+      <div class="container">
+        <div class="section-heading">
+          <h3>Skincare We Love</h3>
+          <p>Professional-grade formulas chosen to support your at-home routine.</p>
+        </div>
+
+        <div class="products-grid">
+          <div class="product-item">
+            <div class="product-thumb">
+              <img src="imageskincare.jpg" alt="IMAGE Skincare products on display" />
+            </div>
+            <div class="product-body">
+              <h5>IMAGE Skincare</h5>
+              <p>Clean, clinical formulas used in-studio for our facial services.</p>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-thumb">
+              <img src="brighteningeyecream.jpg" alt="Brightening eye cream product" />
+            </div>
+            <div class="product-body">
+              <h5>Brightening Eye Care</h5>
+              <p>Targets dark circles and puffiness while staying gentle.</p>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-thumb">
+              <img src="clearcellcreamandserum.jpg" alt="Clear cell cream and serum" />
+            </div>
+            <div class="product-body">
+              <h5>Clarifying Support</h5>
+              <p>Helps manage congestion and keep skin feeling balanced.</p>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-thumb">
+              <img src="blueglaciercryo.jpg" alt="Blue Glacier cryo tools" />
+            </div>
+            <div class="product-body">
+              <h5>Cooling Cryo Tools</h5>
+              <p>Soothing, de-puffing facial massage with glacier-blue rollers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Studio Gallery Strip -->
+    <section id="gallery">
+      <div class="container">
+        <div class="section-heading">
+          <h3>The Studio</h3>
+          <p>A quick peek at your new favorite ritual spot.</p>
+        </div>
+
+        <div class="gallery-strip">
+          <div class="gallery-item">
+            <img src="salonbuilding.jpg" alt="Exterior of Siren Studio building" />
+          </div>
+          <div class="gallery-item">
+            <img src="salonbuilding2.jpg" alt="Different view of Siren Studio building" />
+          </div>
+          <div class="gallery-item">
+            <img src="insidesalon.jpg" alt="Inside treatment space of Siren Studio" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Booking -->
+    <section id="contact">
+      <div class="container contact-cta">
+        <div class="section-heading">
+          <h3>Book Your Visit</h3>
+          <p>
+            Ready to feel a little more like a siren? Reach out to schedule your appointment.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-block">
+            <h4>Call / Text</h4>
+            <p>
+              Chelsey: <a href="tel:15096664050">(509) 666-4050</a><br />
+              Carolina: <a href="tel:15092300881">(509) 230-0881</a>
+            </p>
+          </div>
+
+          <div class="contact-block">
+            <h4>Email</h4>
+            <p>
+              <a href="mailto:sirenstudio86@gmail.com">sirenstudio86@gmail.com</a>
+            </p>
+            <p>Send us your availability, and we’ll take it from there.</p>
+          </div>
+
+          <div class="contact-block">
+            <h4>Find Us</h4>
+            <p>
+              2172 N Hamilton<br />
+              Spokane, WA
+            </p>
+            <p>
+              Instagram:
+              <a href="https://instagram.com/sirenstudio86" target="_blank" rel="noopener">
+                @sirenstudio86
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Siren Studio. All rights reserved.</div>
+      <div>Beautiful enough to lure a sailor to their doom.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

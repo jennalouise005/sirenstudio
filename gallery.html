@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Siren Studio | Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Take a peek inside Siren Studio in Spokane, WA. Explore our cozy lash and skincare studio, lobby, and product displays." />
+
+  <style>
+    :root {
+      --deep-blue: #071326;
+      --ocean-blue: #102341;
+      --sea-foam: #9fd5c0;
+      --accent-green: #5c8f82;
+      --soft-white: #f9fbff;
+      --text-light: #dde6ff;
+      --text-muted: #a9b5d1;
+      --star-gold: #f6e9b8;
+      --radius-lg: 1.5rem;
+      --radius-md: 1rem;
+      --shadow-soft: 0 18px 35px rgba(0, 0, 0, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #182a4d 0%, #050713 60%, #02020a 100%);
+      color: var(--soft-white);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 92vw);
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to right,
+        rgba(7, 19, 38, 0.96),
+        rgba(10, 28, 56, 0.9)
+      );
+      border-bottom: 1px solid rgba(159, 213, 192, 0.18);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid rgba(159, 213, 192, 0.45);
+      box-shadow: 0 0 18px rgba(159, 213, 192, 0.2);
+      background: radial-gradient(circle at 30% 20%, #5c8f82, #071326);
+    }
+
+    .brand-text h1 {
+      font-size: 1.1rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .brand-tagline {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.4rem;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      position: relative;
+      padding-bottom: 0.2rem;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--sea-foam), var(--accent-green));
+      transition: width 0.25s ease;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    main {
+      padding-bottom: 3rem;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 3.2rem 0 2.8rem;
+      border-bottom: 1px solid rgba(159, 213, 192, 0.18);
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.2rem;
+      align-items: center;
+    }
+
+    .hero-text-block h2 {
+      font-size: clamp(2rem, 3vw + 1.2rem, 2.7rem);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-text-block h2 span {
+      display: inline-block;
+      background: linear-gradient(90deg, #e4f5ff, var(--sea-foam));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-tagline {
+      font-style: italic;
+      color: var(--text-light);
+      margin-bottom: 0.9rem;
+      font-size: 0.95rem;
+    }
+
+    .hero-text {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 35rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(159, 213, 192, 0.5);
+      background: rgba(15, 29, 52, 0.9);
+      color: var(--text-light);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .badge::before {
+      content: "✦";
+      font-size: 0.7rem;
+      color: var(--star-gold);
+    }
+
+    .hero-collage {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 0.6rem;
+    }
+
+    .hero-main-image,
+    .hero-side-top,
+    .hero-side-bottom {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(159, 213, 192, 0.45);
+      box-shadow: var(--shadow-soft);
+      background: #050713;
+      min-height: 140px;
+    }
+
+    .hero-main-image img,
+    .hero-side-top img,
+    .hero-side-bottom img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Section headings */
+    section {
+      padding: 2.6rem 0;
+    }
+
+    .section-heading {
+      margin-bottom: 1.3rem;
+    }
+
+    .section-heading h3 {
+      font-size: 1.3rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    .section-heading p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 34rem;
+    }
+
+    /* Gallery grids */
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .gallery-card {
+      position: relative;
+      border-radius: 1.1rem;
+      overflow: hidden;
+      border: 1px solid rgba(159, 213, 192, 0.45);
+      background: #050713;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+      min-height: 140px;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.03);
+      opacity: 0.96;
+    }
+
+    .gallery-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.45rem 0.7rem;
+      font-size: 0.75rem;
+      background: linear-gradient(
+        to top,
+        rgba(2, 3, 10, 0.85),
+        rgba(2, 3, 10, 0.4),
+        transparent
+      );
+      color: var(--text-light);
+    }
+
+    .gallery-caption span {
+      display: block;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    /* Product strip */
+    .products-wrap {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-top: 1.2rem;
+      font-size: 0.8rem;
+    }
+
+    .product-item {
+      background: rgba(9, 21, 41, 0.95);
+      border-radius: 1rem;
+      border: 1px solid rgba(159, 213, 192, 0.4);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.35);
+    }
+
+    .product-thumb {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: #050713;
+    }
+
+    .product-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-body {
+      padding: 0.6rem 0.7rem 0.7rem;
+    }
+
+    .product-body h5 {
+      font-size: 0.8rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .product-body p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      margin-top: 1.4rem;
+    }
+
+    .cta p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.6rem 1.4rem;
+      font-size: 0.86rem;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 500;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--sea-foam), var(--accent-green));
+      color: #041019;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(159, 213, 192, 0.6);
+      color: var(--text-light);
+    }
+
+    .btn-outline:hover {
+      background: rgba(159, 213, 192, 0.1);
+      transform: translateY(-1px);
+    }
+
+    /* Footer */
+    footer {
+      padding: 1.8rem 0 2rem;
+      border-top: 1px solid rgba(159, 213, 192, 0.18);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 2.4rem;
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid-4,
+      .products-wrap {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        font-size: 0.8rem;
+      }
+
+      .hero-collage {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .grid-3,
+      .grid-4,
+      .products-wrap {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-logo">
+          <img src="sirenstudiotextonlylogo.jpg" alt="Siren Studio logo" />
+        </div>
+        <div class="brand-text">
+          <h1>Siren Studio</h1>
+          <div class="brand-tagline">Esthetics &amp; more • Spokane, WA</div>
+        </div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html#top">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="index.html#products">Skincare</a></li>
+          <li><a href="#top" class="active">Studio</a></li>
+          <li><a href="index.html#contact">Book</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text-block">
+          <h2><span>The Studio</span></h2>
+          <p class="hero-tagline">
+            A cozy, ocean-inspired space with soft lighting, plants, and calm energy.
+          </p>
+          <p class="hero-text">
+            Before you ever walk through the door, we want you to know what it feels
+            like to be here — relaxed, welcomed, and taken care of. This is a peek
+            at the lobby, treatment area, and some of the products we use during your visit.
+          </p>
+          <div class="hero-badge-row">
+            <span class="badge">Soft lighting &amp; cozy blankets</span>
+            <span class="badge">Plants, crystals &amp; ocean touches</span>
+            <span class="badge">Quiet, intimate studio</span>
+          </div>
+        </div>
+
+        <div class="hero-collage" aria-hidden="true">
+          <div class="hero-main-image">
+            <img src="insidesalon.jpg" alt="Treatment room inside Siren Studio" />
+          </div>
+          <div>
+            <div class="hero-side-top">
+              <img src="salonlobby.jpg" alt="Lobby of Siren Studio with seating and decor" />
+            </div>
+            <div class="hero-side-bottom" style="margin-top:0.6rem;">
+              <img src="salonbuilding.jpg" alt="Exterior of Siren Studio building" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Exterior Views -->
+    <section>
+      <div class="container">
+        <div class="section-heading">
+          <h3>Outside &amp; Arrival</h3>
+          <p>
+            Here’s how Siren Studio looks from the outside so you know you’re in the right place
+            when you pull up and park.
+          </p>
+        </div>
+
+        <div class="gallery-grid grid-3">
+          <figure class="gallery-card">
+            <img src="salonbuilding.jpg" alt="Front view of Siren Studio building" />
+            <figcaption class="gallery-caption">
+              Front entrance<br />
+              <span>Look for this building when you arrive on N Hamilton.</span>
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-card">
+            <img src="salonbuilding2.jpg" alt="Alternate angle of Siren Studio building" />
+            <figcaption class="gallery-caption">
+              Side angle<br />
+              <span>Another view so you can spot us from the street.</span>
+            </figcaption>
+          </figure>
+
+          <!-- Note: HEIC may need converting to JPG/PNG for some browsers -->
+          <figure class="gallery-card">
+            <img src="salonbuilding3.heic" alt="Additional exterior view of Siren Studio" />
+            <figcaption class="gallery-caption">
+              Neighborhood view<br />
+              <span>Shows more of the surrounding area near the studio.</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Inside the Studio -->
+    <section>
+      <div class="container">
+        <div class="section-heading">
+          <h3>Inside the Studio</h3>
+          <p>
+            Soft blankets, warm lighting, and tiny details — all meant to make your lash or
+            skincare appointment feel like a mini escape.
+          </p>
+        </div>
+
+        <div class="gallery-grid grid-3">
+          <figure class="gallery-card">
+            <img src="salonlobby.jpg" alt="Siren Studio lobby with seating" />
+            <figcaption class="gallery-caption">
+              Lobby lounge<br />
+              <span>Where you’ll check in, get comfy, and chat before your service.</span>
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-card">
+            <img src="insidesalon.jpg" alt="Treatment bed and decor inside Siren Studio" />
+            <figcaption class="gallery-caption">
+              Treatment room<br />
+              <span>Where all the lash, skin, and brow magic happens.</span>
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-card">
+            <img src="salonbuilding2.jpg" alt="Studio windows bringing in natural light" />
+            <figcaption class="gallery-caption">
+              Natural light<br />
+              <span>A mix of natural light and soft lamps keeps the space gentle on your eyes.</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products & Details -->
+    <section>
+      <div class="container">
+        <div class="section-heading">
+          <h3>Products &amp; Rituals</h3>
+          <p>
+            A closer look at some of the skincare and tools we use in your treatments —
+            chosen for both results and the overall experience.
+          </p>
+        </div>
+
+        <div class="products-wrap">
+          <div class="product-item">
+            <div class="product-thumb">
+              <img src="imageskincare.jpg" alt="Shelf of IMAGE Skincare products at Siren Studio" />
+            </div>
+            <div class="product-body">
+              <h5>IMAGE Skincare Shelf</h5>
+              <p>Clinical-grade formulas behind many of our facials.</p>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-thumb">
+              <img src="brighteningeyecream.jpg" alt="Brightening eye cream on a tray" />
+            </div>
+            <div class="product-body">
+              <h5>Brightening Eye Care</h5>
+              <p>Targets tired, puffy under-eyes during targeted treatments.</p>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-thumb">
+              <img src="clearcellcreamandserum.jpg" alt="Clear Cell cream and serum products" />
+            </div>
+            <div class="product-body">
+              <h5>Clarifying Favorites</h5>
+              <p>Go-to products for congestion and breakout-prone skin.</p>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-thumb">
+              <img src="super greensstrength.jpg" alt="Super greens skincare product for skin strength" />
+            </div>
+            <div class="product-body">
+              <h5>Super Greens Support</h5>
+              <p>Helps nourish and strengthen the skin barrier.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="products-wrap" style="margin-top:1rem;">
+          <div class="product-item">
+            <div class="product-thumb">
+              <img src="blueglaciercryo.jpg" alt="Blue Glacier cryo rollers on a tray" />
+            </div>
+            <div class="product-body">
+              <h5>Blue Glacier Cryo</h5>
+              <p>Cooling tools we use to de-puff, soothe, and calm the skin.</p>
+            </div>
+          </div>
+
+          <!-- You can leave the remaining slots empty or duplicate others if needed -->
+        </div>
+
+        <div class="cta">
+          <p>
+            If you spot something here you’re curious about, ask about it at your appointment —
+            we love explaining what we’re using on your skin.
+          </p>
+          <a href="index.html#contact" class="btn btn-primary">
+            Book an Appointment
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Siren Studio. All rights reserved.</div>
+      <div>Beautiful enough to lure a sailor to their doom.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
